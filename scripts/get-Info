@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "Hello, world!"
+FILE="names.txt"
+WORD_TO_REPLACE="CHAR"
+BASE_URL="http://rbnorway.org/CHAR-t7-frames/"
+mkdir -p frameData
+echo $FILE
+while IFS=',' read -ra ADDR;
+do
+  name=$(tr '[:upper:]' '[:lower:]'<<<"${ADDR[0]}" | tr " " -)
+  new_url=$(sed "s/$WORD_TO_REPLACE/$name/" <<< "$BASE_URL")
+  curl $new_url > "frameData/"$name"_frame_data.html"
+  sleep 1
+done < "$FILE"

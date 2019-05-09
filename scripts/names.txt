@@ -1,0 +1,41 @@
+Alisa,Alisa Bosconovitch
+Asuka,Asuka Kazama
+Bob,Bob
+Bryan,Bryan Fury
+Claudio,Claudio Serafino
+Devil Jin,Devil Jin
+Dragunov,Sergio Dragonov
+Eddy,Eddy Gordo
+Gigas,Gigas
+Heihachi,Heihachi Mishima
+Hwoarang,Hwoarang
+Jack7,JACK-7
+Jin,Jin Kazama
+Josie,Josie Rizal
+Katarina,Katarina Alves
+Kazumi,Kazumi Mishima
+Kazuya,Kazuya Mishima
+King,King
+Kuma,Kuma
+Lars,Lars Alexandersson
+Law,Marshal Law
+Lee,Lee Chaolan
+Leo,Leo
+Lili,Lili
+Lucky Chloe,Lucky Chloe
+Master Raven,Master Raven
+Miguel,Miguel Caballero Rojo
+Nina,Nina Williams
+Panda,Panda
+Paul,Paul Phoenix
+Shaheen,Shaheen
+Steve,Steve Fox
+Xiaoyu,Ling Xiaoyu
+Yoshimitsu,Yoshimitsu
+Akuma,Akuma
+Lei,Lei Wulong
+Anna,Anna Williams
+Armor King,Armor King
+Marduk,Craig Marduk
+Negan,Negan
+Julia,Julia Chang
