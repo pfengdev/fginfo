@@ -1,2 +1,2 @@
-# t7info
-T7 Info
+# fginfo
+FG Info
