@@ -1,0 +1,66 @@
+#!/bin/bash
+mkdir -p "json"
+for file in frameData/*.html
+do
+	json_string=""
+	start=0
+	offset=0
+	counter=0
+	NUM_READ=10
+	skip=1
+	while IFS= read -r line;
+	do
+		if [ "$skip" == 1 ] && [ "$counter" == $((NUM_READ-1)) ]; then
+			skip=0
+			json_string="["
+		fi
+		if [ "$skip" == 0 ]; then
+			if [ "$counter" == 1 ]; then
+				json_string=$json_string'"{Command":"'
+			elif [ "$counter" == 2 ]; then
+				json_string=$json_string'"Hit level":"'
+			elif [ "$counter" == 3 ]; then
+				json_string=$json_string'"Damage":"'
+			elif [ "$counter" == 4 ]; then
+				json_string=$json_string'"Start up":"'
+			elif [ "$counter" == 5 ]; then
+				json_string=$json_string'"Block frame":"'
+			elif [ "$counter" == 6 ]; then
+				json_string=$json_string'"Hit frame":"'
+			elif [ "$counter" == 7 ]; then
+				json_string=$json_string'"Counter hit frame":"'
+			elif [ "$counter" == 8 ]; then
+				json_string=$json_string'"Notes":"'
+			fi
+			if [ "$counter" -gt 0 ] && [ "$counter" -lt $((NUM_READ-1)) ]; then
+				for (( i=0; i<${#line}; i++ )); do
+					if [ "$i" -gt 3 ] && [ "${line:$i:1}" == "<" ]; then
+						break
+  					elif [ "$i" -gt 3 ]; then
+  						json_string=$json_string"${line:$i:1}"
+  					fi
+				done
+				if [ "$counter" == 8 ]; then
+					json_string=$json_string'"},'
+				else
+					json_string=$json_string'",'
+				fi
+			fi
+		fi
+
+		if [ "$start" == 1 ]; then
+			counter=$(( (counter+1) % $NUM_READ ))
+		fi
+
+		if [ "$line" == '<table border="1">' ]; then
+			start=1
+		fi
+
+		if [ "$line" == "</table>" ]; then
+			json_string=${json_string%,}"]"
+			break
+		fi
+	done < "$file"
+base=$(basename $file)
+echo -n $json_string > "json/${base%.html}"".json"
+done
