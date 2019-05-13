@@ -16,7 +16,7 @@ do
 		fi
 		if [ "$skip" == 0 ]; then
 			if [ "$counter" == 1 ]; then
-				json_string=$json_string'"{Command":"'
+				json_string=$json_string'{"Command":"'
 			elif [ "$counter" == 2 ]; then
 				json_string=$json_string'"Hit level":"'
 			elif [ "$counter" == 3 ]; then
